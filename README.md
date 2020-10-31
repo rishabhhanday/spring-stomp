@@ -78,6 +78,7 @@ disconnect the client for any specific reason.
 ### Additional notes
 NOTE:- This poc contains maximum stomp feature with basic stomp authentication
 . Below are the references . 
+1. https://www.notion.so/STOMP-3b52b0d3f43b4785884997caddedfd8b
 1. https://stomp.github.io/stomp-specification-1.1.html#DISCONNECT
 2. https://spring.io/guides/gs/messaging-stomp-websocket/
 3. https://www.baeldung.com/websockets-spring
