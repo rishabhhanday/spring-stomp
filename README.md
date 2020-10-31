@@ -75,7 +75,7 @@ disconnect the client for any specific reason.
 }
 ```
 
-Please watch video present in `how-to-use` folder
+Please watch video present in `how-to-use` folder https://github.com/rishabhhanday/spring-stomp/blob/main/how-to-use/stomp-client-demo.mp4
 
 ## Additional notes
 NOTE:- This poc contains maximum stomp feature with basic stomp authentication
