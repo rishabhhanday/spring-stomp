@@ -3,7 +3,7 @@
 ## Introduction
 STOMP is a subprotocol operating on top of the lower-level WebSocket.
 
-## STOMP when we already have WebSocket?
+## Why STOMP when we already have WebSocket?
 
 The WebSocket protocol allows you to implement bidirectional
 communication between applications. It is important to know that HTTP is
