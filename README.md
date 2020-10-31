@@ -3,7 +3,7 @@
 ## Introduction
 STOMP is a subprotocol operating on top of the lower-level WebSocket.
 
-###Why STOMP when we already have WebSocket?
+## STOMP when we already have WebSocket?
 
 The WebSocket protocol allows you to implement bidirectional
 communication between applications. It is important to know that HTTP is
@@ -26,8 +26,8 @@ SEND. On one hand, these commands are very handy to manage
 communication while, on the other, they allow us to implement solutions
 with more sophisticated features like message acknowledgment.
 
-##Frames
-#####Client frames
+## Frames
+##### Client frames
 1. SEND - The SEND frame sends a message to a destination in the
 messaging system. It has one REQUIRED header, destination,
 which indicates where to send the message. The body of the
@@ -46,7 +46,7 @@ destination.
 4. DISCONNECT - A client can disconnect from the server at anytime by
 closing the socket
 
-#####Server frames
+##### Server frames
 
 1. MESSAGE - MESSAGE frames are used to convey messages from
 subscriptions to the client. The MESSAGE frame will include a
@@ -60,7 +60,7 @@ message. The frame body contains the contents of the message
 disconnect the client for any specific reason.
 
 ## How to run and play with application (its a spring boot application)
-#####Steps
+##### Steps
 1. mvn clean install 
 2. mvn spring-boot:run
 3. https://rishabhhanday.github.io/stomp-client-v3/ (Home made stomp test client)
