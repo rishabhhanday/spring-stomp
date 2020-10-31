@@ -1,6 +1,6 @@
 # spring-stomp
 
-###Introduction
+## Introduction
 STOMP is a subprotocol operating on top of the lower-level WebSocket.
 
 ###Why STOMP when we already have WebSocket?
@@ -26,7 +26,7 @@ SEND. On one hand, these commands are very handy to manage
 communication while, on the other, they allow us to implement solutions
 with more sophisticated features like message acknowledgment.
 
-###Frames
+##Frames
 #####Client frames
 1. SEND - The SEND frame sends a message to a destination in the
 messaging system. It has one REQUIRED header, destination,
@@ -59,7 +59,7 @@ message. The frame body contains the contents of the message
 2. ERROR -the server can send the client an ERROR frame and
 disconnect the client for any specific reason.
 
-### How to run and play with application (its a spring boot application)
+## How to run and play with application (its a spring boot application)
 #####Steps
 1. mvn clean install 
 2. mvn spring-boot:run
@@ -75,7 +75,9 @@ disconnect the client for any specific reason.
 }
 ```
 
-### Additional notes
+Please watch video present in `how-to-use` folder
+
+## Additional notes
 NOTE:- This poc contains maximum stomp feature with basic stomp authentication
 . Below are the references . 
 1. https://www.notion.so/STOMP-3b52b0d3f43b4785884997caddedfd8b
