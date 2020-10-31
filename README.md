@@ -91,7 +91,7 @@ NOTE:- This poc contains maximum stomp feature with basic stomp authentication
 8. https://www.toptal.com/java/stomp-spring-boot-websocket
 
 ##### PS
-Just a basic game that uses websocket for bidirectional async messaging . Provide your team name and player name which will be used by the server to calulate your runs scored in each ball in an over .
+Just a basic game that uses websocket for bidirectional messaging . Provide your team name and player name which will be used by the server to calulate your runs scored in each ball in an over .
 ENJOY
 
                                                                                                                                          
