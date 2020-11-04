@@ -3,6 +3,17 @@
 ## Introduction
 STOMP is a subprotocol operating on top of the lower-level WebSocket.
 
+## Stomp-Client
+If you are unclear about stomp protocols, please refer to the next section .
+
+Stomp client will help you to connect to any stomp based application. It is quite generic and can be used 
+to perform all the below operation regarding stomp/websocket protocol .
+1. Connect to any running stomp based application
+2. Send connect headers in CONNECT frame
+3. Subscribe to n number of endpoint.
+4. Publish a MESSAGE frame with n number of headers in MESSAGE frame.
+5. Debug section will help you identify the problems with connection, it'll display all the frames sent and recieved.
+
 ## Why STOMP when we already have WebSocket?
 
 The WebSocket protocol allows you to implement bidirectional
@@ -63,8 +74,8 @@ disconnect the client for any specific reason.
 ##### Steps
 1. mvn clean install 
 2. mvn spring-boot:run
-3. https://rishabhhanday.github.io/stomp-client-v3/ (Home made stomp test client)
-4. websocket connect url -  ws://localhost:8080/stomp
+3. https://localhost:8383 (Home made stomp test client)
+4. websocket connect url -  ws://localhost:8383/stomp
 5. Subsciption endpoints - /reply/teams , /reply/score , /reply/over , /reply/weather , /reply/error
 6. Publish endpoint - /game/start  
 7. Publish body - 
@@ -80,6 +91,7 @@ Please watch video present in `how-to-use` folder https://github.com/rishabhhand
 ## Additional notes
 NOTE:- This poc contains maximum stomp feature with basic stomp authentication
 . Below are the references . 
+1. https://www.notion.so/HTTPS-for-Spring-boot-application-d729e13114374922af9693cd17ebccee
 1. https://www.notion.so/STOMP-3b52b0d3f43b4785884997caddedfd8b
 1. https://stomp.github.io/stomp-specification-1.1.html#DISCONNECT
 2. https://spring.io/guides/gs/messaging-stomp-websocket/
