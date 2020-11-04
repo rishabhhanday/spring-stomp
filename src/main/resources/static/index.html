@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stomp-client</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        #main-content {
+            padding: 2em 3em;
+            background-color: #fff;
+        }
+
+        .vl {
+            border-left: 1px solid gray;
+            height: 800px;
+        }
+
+        #scrolling-div {
+            height: 300px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!--<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies
+on Javascript being
+enabled. Please enable
+Javascript and reload this page!</h2></noscript>-->
+    <div id="main-content" class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label for="url">WebSocket connection:</label>
+                            <input type="text" id="url" class="form-control" placeholder="Socket url">
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="subscription">Connect Headers:</label> <span class="glyphicon glyphicon-plus"
+                                id="add-connect-header"></span>
+                            <!--<span class="glyphicon glyphicon-minus" id="minus-connect-header"></span>-->
+                            <div class="row">
+                                <div class="col-md-5" id="connect-header-key">
+                                    <input type="text" id="connect-header-key-0" class="form-control"
+                                        placeholder="Header name"><br>
+                                </div>
+                                <div class="col-md-5" id="connect-header-value">
+                                    <input type="text" id="connect-header-value-0" class="form-control"
+                                        placeholder="Value"><br>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="subscription">Subscription URL:</label> <span class="glyphicon glyphicon-plus"
+                                id="add-sub"></span>
+                            <span class="glyphicon glyphicon-minus" data-toggle="modal" data-target="#myModal"></span>
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Unsubscribe endpoint</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="text" id="unsubscribe-endpoint" class="form-control"
+                                                placeholder="Enter Stomp Subscription URL">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success"
+                                                data-dismiss="modal" id="unsubscribe-btn">Unsubscribe</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="subscription">
+                                <input type="text" id="subscription-0" class="form-control"
+                                    placeholder="Stomp Subscription URL"><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <center>
+                    <button id="connect" class="btn btn-success" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-danger" type="submit" disabled="disabled">
+                        Disconnect
+                    </button></center>
+                <hr />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="payload-destination">Destination Queue:</label>
+                            <input type="text" id="payload-destination" class="form-control"
+                                placeholder="Destination Queue URL">
+                            <br>
+                            <label for="subscription">Message Headers:</label> <span class="glyphicon glyphicon-plus"
+                                id="add-message-header"></span>
+                            <!--<span class="glyphicon glyphicon-minus" id="minus-message-header"></span>-->
+                            <div class="row">
+                                <div class="col-md-5" id="message-header-key">
+                                    <input type="text" id="message-header-key-0" class="form-control"
+                                        placeholder="Header name"><br>
+                                </div>
+                                <div class="col-md-5" id="message-header-value">
+                                    <input type="text" id="message-header-value-0" class="form-control"
+                                        placeholder="Value"><br>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="payload">Message:</label>
+                            <textarea id="payload" class="form-control" placeholder="Message" rows="5"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <center>
+                    <button id="send-message" class="btn btn-primary" type="submit" disabled="true">Send</button>
+                </center>
+                <hr />
+                <div class="row">
+                    <h5><b>Incoming Messages:</b></h5>
+                </div>
+                <div class="row" id="scrolling-div">
+                    <table id="conversation-1" class="table table-hover">
+                        <tbody id="messages">
+                        </tbody>
+                    </table>
+                    <!--  <div class="form-group">
+                        <label for="comment">Message:</label>
+                        <textarea class="form-control" rows="10" id="messages" readonly></textarea>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-md-3 vl">
+                <div class="col-md-12">
+                    <table id="conversation-2" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>DEBUG :</th>
+                            </tr>
+                        </thead>
+                        <tbody id="frames">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="dist/js/stomp-bundle.js"></script></body>
+
+</html>
