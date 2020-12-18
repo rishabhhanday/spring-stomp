@@ -7,18 +7,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class HttpWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Override
-  protected void configure(final HttpSecurity http) throws Exception {
-    // This is not for websocket authorization, and this should most likely not be altered.
-    http
-        .authorizeRequests()
-        .anyRequest()
-        .permitAll()
-        .and()
-        .requiresChannel()
-        .anyRequest()
-        .requiresSecure();
-
-    http.csrf().disable();
-  }
+    @Override
+    protected void configure(final HttpSecurity http) throws Exception {
+        // This is not for websocket authorization, and this should most likely not be altered.
+        http
+                .authorizeRequests()
+                .anyRequest()
+                .permitAll();
+        http.csrf().disable();
+    }
 }
